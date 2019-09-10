@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 1. 浮点数精度问题（float, double)
@@ -45,6 +47,13 @@ public class TestDataType {
     public void testDefaultValue() {
         Person person = new Person();
         System.out.println(person);
+    }
+
+    @Test
+    public void testAtomicLong() {
+        AtomicLong longValue = new AtomicLong();
+        longValue.addAndGet(100);
+        System.out.println(longValue);
     }
 
     private float subtract(float a, float b) {
