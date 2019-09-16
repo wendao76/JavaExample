@@ -5,6 +5,7 @@ import sun.rmi.transport.tcp.TCPTransport;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TestMap {
     @Test
@@ -84,5 +85,13 @@ public class TestMap {
         map.put(1,"testb");
         map.put(23, "testc");
         System.out.println(map);
+    }
+
+    @Test
+    public void testCopyOnWriteArrayList() {
+        //线程安全， 通过写入时加锁拷贝实现
+        CopyOnWriteArrayList<String> copy = new CopyOnWriteArrayList<String>();
+        copy.add("testa");
+        copy.add("testb");
     }
 }
