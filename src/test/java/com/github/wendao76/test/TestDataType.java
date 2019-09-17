@@ -48,12 +48,6 @@ public class TestDataType {
         System.out.println(person);
     }
 
-    @Test
-    public void testAtomicLong() {
-        AtomicLong longValue = new AtomicLong();
-        longValue.addAndGet(100);
-        System.out.println(longValue);
-    }
 
     private float subtract(float a, float b) {
         BigDecimal numa = new BigDecimal(Float.toString(a));
