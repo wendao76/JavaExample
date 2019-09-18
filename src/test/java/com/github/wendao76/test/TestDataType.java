@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 1. 浮点数精度问题（float, double)

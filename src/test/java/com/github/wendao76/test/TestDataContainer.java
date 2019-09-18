@@ -6,8 +6,9 @@ import sun.rmi.transport.tcp.TCPTransport;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
-public class TestMap {
+public class TestDataContainer {
     @Test
     public void testHashTable() {
         Hashtable<Integer, String> hTable = new Hashtable<Integer, String>();
@@ -93,5 +94,18 @@ public class TestMap {
         CopyOnWriteArrayList<String> copy = new CopyOnWriteArrayList<String>();
         copy.add("testa");
         copy.add("testb");
+    }
+
+    @Test
+    public void testBlockQueue() {
+        LinkedBlockingQueue<String> bq = new LinkedBlockingQueue<String>();
+        bq.add("testa");
+        bq.offer("testb");
+        System.out.println(bq.poll());
+        System.out.println(bq);
+        bq.offer("testc");
+        System.out.println(bq.peek());
+        System.out.println(bq);
+
     }
 }
