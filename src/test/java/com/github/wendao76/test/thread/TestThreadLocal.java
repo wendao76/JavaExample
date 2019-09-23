@@ -2,6 +2,10 @@ package com.github.wendao76.test.thread;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 public class TestThreadLocal {
     @Test
     public void testThreadLocal() throws InterruptedException {
@@ -14,9 +18,31 @@ public class TestThreadLocal {
         Thread.sleep(1000);
     }
 
+    @Test
+    public void testWickReference() {
+        Map<MapKey, MapValue> map = new HashMap<>();
+        MapKey key1 = new MapKey();
+        MapValue val1 = new MapValue();
+        map.put(key1, val1);
+
+        MapKey key2 = key1;
+        key1 = null;
+        System.out.println(map.get(key2));
+        System.gc();
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
+
+}
+class MapKey{
+
+}
+
+class MapValue{
+    int age = 100;
 }
 class LocalThread{
-    public static final ThreadLocal<Integer> mask = new ThreadLocal<Integer>();
+    public final ThreadLocal<Integer> mask = new ThreadLocal<Integer>();
 }
 
 class ThreadA extends Thread{
