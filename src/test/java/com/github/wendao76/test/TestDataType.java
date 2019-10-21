@@ -47,6 +47,11 @@ public class TestDataType {
         System.out.println(person);
     }
 
+    @Test
+    public void testBitMove() {
+        System.out.println(0<<29);
+        System.out.println(1<<29);
+    }
 
     private float subtract(float a, float b) {
         BigDecimal numa = new BigDecimal(Float.toString(a));
