@@ -15,33 +15,34 @@ import java.io.*;
  */
 public class TestDeepCopyKryo {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Person2 p1 = new Person2(25, "wendao", new Cat2("mimi"));
         Kryo kryo = new Kryo();
-        kryo.register(Person2.class);
+        Human h1 = new Human(25, "wendao", new Cat2("mimi"));
+        kryo.register(Human.class);
         kryo.register(Cat2.class);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Output output = new Output(new ObjectOutputStream(baos));
-        kryo.writeObject(output, p1);
-        output.close();
 
-        //读取
-        Input input = new Input(new ByteArrayInputStream(baos.toByteArray()));
-        Person2 p2 = kryo.readObject(input, Person2.class);
-        input.close();
+        //深拷贝
+        Human hCopy1 = kryo.copy(h1);
+        //浅拷贝
+        Human hCopy2 = kryo.copyShallow(h1);
 
-        System.out.println(p2.getCat().getName());
+        System.out.println(hCopy1.getCat().getName());
+        System.out.println(hCopy2.getCat().getName());
+        h1.getCat().setName("miaomiao");
+        System.out.println("h1 changed！");
+        System.out.println(hCopy1.getCat().getName());
+        System.out.println(hCopy2.getCat().getName());
     }
 }
 
 @Data
-class Person2 {
+class Human {
     private int age;
     private String name;
     private Cat2 cat;
-    public Person2() {
+    public Human() {
 
     }
-    public Person2(int age, String name, Cat2 cat) {
+    public Human(int age, String name, Cat2 cat) {
         this.age = age;
         this.name = name;
         this.cat = cat;
