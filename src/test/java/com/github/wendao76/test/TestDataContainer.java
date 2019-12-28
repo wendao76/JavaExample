@@ -30,6 +30,8 @@ public class TestDataContainer {
     public void testHashMap() {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         map.put("testa", 10000);
+        map.put(null, 999);
+        map.put(null, 1999);
         System.out.println(map);
     }
 

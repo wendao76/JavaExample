@@ -42,6 +42,14 @@ public class TestDataType {
     }
 
     @Test
+    public void testDataTranslate() {
+        short i = 1;
+        int j=1;
+        j=i;
+        System.out.println(i);
+    }
+
+    @Test
     public void testDefaultValue() {
         Person person = new Person();
         System.out.println(person);
