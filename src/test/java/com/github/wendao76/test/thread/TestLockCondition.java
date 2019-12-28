@@ -6,6 +6,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 线程使用Lock进行通信
+ * @author wendao76
+ */
 public class TestLockCondition {
     private Object obj = new Object();
     @Test

@@ -2,6 +2,10 @@ package com.github.wendao76.test.thread;
 
 import org.junit.Test;
 
+/**
+ * 基本线程间通信
+ * @author wendao76
+ */
 public class TestObjectLock {
     private Object obj = new Object();
     @Test
