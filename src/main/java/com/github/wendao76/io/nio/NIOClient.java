@@ -115,7 +115,12 @@ public class NIOClient {
     }
 
 
-
+    /**
+     * 客户端启动入口
+     * @author wendao76
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         new NIOClient().session();
     }

@@ -9,6 +9,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * NIO服务端
+ * @author wendao76
+ */
 public class NIOServer {
     private int port = 8080;
     private Charset charset = Charset.forName("UTF-8");
@@ -50,20 +54,25 @@ public class NIOServer {
      * @throws IOException
      */
     public void listener() throws IOException {
-
-        //死循环，这里不会阻塞
-        //CPU工作频率可控了，是可控的固定值
+        /**
+         * 死循环，这里不会阻塞
+         * CPU工作频率可控了，是可控的固定值
+         */
         while(true) {
-
             //在轮询，我们服务大厅中，到底有多少个人正在排队
             int wait = selector.select();
-            if(wait == 0) continue; //如果没有人排队，进入下一次轮询
+
+            //如果没有人排队，进入下一次轮询
+            if(wait == 0) {
+                continue;
+            }
 
             //取号，默认给他分配个号码（排队号码）
-            Set<SelectionKey> keys = selector.selectedKeys();  //可以通过这个方法，知道可用通道的集合
+            //可以通过这个方法，知道可用通道的集合
+            Set<SelectionKey> keys = selector.selectedKeys();
             Iterator<SelectionKey> iterator = keys.iterator();
             while(iterator.hasNext()) {
-                SelectionKey key = (SelectionKey) iterator.next();
+                SelectionKey key = iterator.next();
                 //处理一个，号码就要被消除，打发他走人（别在服务大厅占着茅坑不拉屎了）
                 //过号不候
                 iterator.remove();
@@ -71,10 +80,15 @@ public class NIOServer {
                 process(key);
             }
         }
-
     }
 
 
+    /**
+     * 业务处理逻辑
+     * @author wendao76
+     * @param key
+     * @throws IOException
+     */
     public void process(SelectionKey key) throws IOException {
         //判断客户端确定已经进入服务大厅并且已经可以实现交互了
         if(key.isAcceptable()){
@@ -141,7 +155,9 @@ public class NIOServer {
         }
     }
 
-    //TODO 要是能检测下线，就不用这么统计了
+    /**
+     * TODO 要是能检测下线，就不用这么统计了
+     */
     public int onlineCount() {
         int res = 0;
         for(SelectionKey key : selector.keys()){
@@ -168,6 +184,11 @@ public class NIOServer {
     }
 
 
+    /**
+     * 服务启动入口
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         new NIOServer(8080).listener();
     }

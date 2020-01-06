@@ -6,8 +6,18 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestDataContainer {
+    @Test
+    public void testArrayList() {
+        List<Integer> numbs = new ArrayList<>(100);
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int i=0; i< 100 ;i++) {
+            numbs.add(random.nextInt(10000));
+        }
+    }
+
     @Test
     public void testHashTable() {
         Hashtable<Integer, String> hTable = new Hashtable<Integer, String>();
