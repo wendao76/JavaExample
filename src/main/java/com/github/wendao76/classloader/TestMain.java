@@ -8,6 +8,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.channels.FileChannel;
 
+/**
+ * 类的热加载
+ * @author wendao76
+ */
 public class TestMain {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, InterruptedException, IOException {
         loadUser();
@@ -37,6 +41,12 @@ public class TestMain {
         loadUser();
     }
 
+    /**
+     * 文件复制（零拷贝）
+     * @param sourceName
+     * @param destName
+     * @throws IOException
+     */
     private static void copyFileUsingFileChannels(String sourceName, String destName) throws IOException {
         File source = null;
         File dest = null;
