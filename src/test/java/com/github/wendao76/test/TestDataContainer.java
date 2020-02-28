@@ -16,6 +16,8 @@ public class TestDataContainer {
         for (int i=0; i< 100 ;i++) {
             numbs.add(random.nextInt(10000));
         }
+
+        List<Integer> threadSafeList = Collections.synchronizedList(numbs);
     }
 
     @Test

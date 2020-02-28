@@ -12,6 +12,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * @author wendao76
+ */
 public class AioServer {
     private final int port;
 
@@ -20,13 +23,17 @@ public class AioServer {
         new AioServer(port);
     }
 
-    //注册一个端口，用来给客户端连接
+    /**
+     * 注册一个端口，用来给客户端连接
+     */
     public AioServer(int port) {
         this.port = port;
         listen();
     }
 
-    //侦听方法
+    /**
+     *  侦听方法
+     */
     private void listen() {
         try {
             //线程缓冲池，为了体现异步
@@ -83,7 +90,9 @@ public class AioServer {
                     //System.out.println("操作完成");
                 }
 
-                //实现IO操作失败的方法
+                /**
+                 * 实现IO操作失败的方法
+                 */
                 @Override
                 public void failed(Throwable exc, Object attachment) {
                     System.out.println("IO操作是失败: " + exc);
