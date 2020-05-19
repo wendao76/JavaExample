@@ -1,8 +1,6 @@
 package com.github.wendao76.regrex;
 
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -16,7 +14,6 @@ import java.util.regex.Pattern;
  * @description 正则表达式工具
  * @date 2020-5-12 16:08
  */
-@Slf4j
 public class ReUtilExt {
     private static final Integer PHONE_NUMBER_LENGTH = 11;
 
