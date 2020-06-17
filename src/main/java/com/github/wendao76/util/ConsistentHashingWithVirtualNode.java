@@ -8,9 +8,11 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
+ * 一致性哈希(带虚拟节点)
+ *
  * @author wendao76
  * @version 1.0
- * @description 类描述信息
+ * @description 一致性哈希(带虚拟节点)
  * @className ConsistentHashingWithVirtualNode
  * @date 2020-6-12 22:55
  */
