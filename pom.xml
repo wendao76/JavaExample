@@ -70,5 +70,18 @@
             <artifactId>hutool-all</artifactId>
             <version>5.3.2</version>
         </dependency>
+
+        <!-- mark相关库 -->
+        <dependency>
+            <groupId>com.vladsch.flexmark</groupId>
+            <artifactId>flexmark-all</artifactId>
+            <version>0.62.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibeetl/beetl -->
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>3.2.3.RELEASE</version>
+        </dependency>
     </dependencies>
 </project>
